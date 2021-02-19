@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="it" class="night">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Today Weather</title>
+</head>
+
+<body>
+  <div id="welcome_panel" class="welcome_panel">
+    <img src="300ppi/Logo.png" id="logo">
+    <p>Powered by Digital_Z</p>
+  </div>
+  <img src="300ppi/plusBtn.png" id="plusBtn">
+
+  <div id="overlay_select" class="overlay_select no_opacity">
+    <label for="city-select">Seleziona una Città:</label>
+    <img src="300ppi/minunBtn.png" id="minunBtn" class="overlay__close">
+    <!-- <strong id="overlayClose" class="overlay__close">></strong> -->
+    <select name="Città" id="city-select">
+
+      <option value="aci+bonaccorsi">Aci Bonaccorsi</option>
+      <option value="aci+castello">Aci Castello</option>
+      <option value="aci+catena">Aci Catena</option>
+      <option value="aci+sant'antonio">Aci Sant'Antonio</option>
+      <option value="acireale">Acireale</option>
+      <option value="aci+trezza">Aci Trezza</option>
+      <option value="adrano">Adrano</option>
+      <option value="belpasso">Belpasso</option>
+      <option value="biancavilla">Biancavilla</option>
+      <option value="bronte">Bronte</option>
+      <option value="calatabiano">Calatabiano</option>
+      <option value="caltagirone">Caltagirone</option>
+      <option value="camporotondo+etneo">Camporotondo Etneo</option>
+      <option value="catania" selected="selected">Catania</option>
+      <option value="castel+di+iudica">Castel di Iudica</option>
+      <option value="castiglione+di+sicilia">Castiglione di Sicilia</option>
+      <option value="giarre">Giarre</option>
+      <option value="grammichele">Grammichele</option>
+      <option value="gravina+di+catania">Gravina di Catania</option>
+      <option value="licodia+eubea">Licodia Eubea</option>
+      <option value="linguaglossa">Linguaglossa</option>
+      <option value="maletto">Maletto</option>
+      <option value="maniace">Maniace</option>
+      <option value="mascali">Mascali</option>
+      <option value="mascalucia">Mascalucia</option>
+      <option value="mazzarrone">Mazzarrone</option>
+      <option value="militello+in+val+di+catania">Militello in val di Catania</option>
+      <option value="milo">Milo</option>
+      <option value="mineo">Mineo</option>
+      <option value="mirabella+imbaccari">Mirabella Imbaccari</option>
+      <option value="misterbianco">Misterbianco</option>
+      <option value="motta+sant'anastasia">Motta Sant'Anastasia</option>
+      <option value="nicolosi">Nicolosi</option>
+      <option value="palagonia">Palagonia</option>
+      <option value="paterno">Paternò</option>
+      <option value="pedara">Pedara</option>
+      <option value="piedimonte+etneo">Piedimonte Etneo</option>
+      <option value="raddusa">Raddusa</option>
+      <option value="ragalna">Ragalna</option>
+      <option value="ramacca">Ramacca</option>
+      <option value="randazzo">Randazzo</option>
+      <option value="riposto">Riposto</option>
+      <option value="san+cono">San Cono</option>
+      <option value="san+giovanni+la+punta">San Giovanni La Punta</option>
+      <option value="san+gregorio+di+catania">San Gregorio di Catania</option>
+      <option value="san+michele+di+ganzaria">San Michele di Ganzaria</option>
+      <option value="san+pietro+clarenza">San Pietro Clarenza</option>
+      <option value="santa+maria+di+licodia">Santa Maria di Licodia</option>
+      <option value="santa+venerina">Santa Venerina</option>
+      <option value="sant'agata+li+battiati">Sant'Agata li Battiati</option>
+      <option value="sant'alfio">Sant'Alfio</option>
+      <option value="scordia">Scordia</option>
+      <option value="trecastagni">Trecastagni</option>
+      <option value="tremestieri+etneo">Tremestieri Etneo</option>
+      <option value="valverde">Valverde</option>
+      <option value="viagrande">Viagrande</option>
+      <option value="vizzini">Vizzini</option>
+      <option value="zafferana+etnea">Zafferana Etnea</option>
+    </select>
+    <button id="okBtn">Ok</button>
+  </div>
+  <div class="forecast-wrapper">
+    <h3 id="city-name"></h3>
+    <section class="main-temp-wrapper">
+      <p id="temp-feels"></p>
+      <sup>°c</sup>
+    </section>
+    
+    <div class="weather-descritpion-wrapper">
+      <div id="icon-wrapper">
+        <img id="icon">
+      </div>
+      <p id="weather-description"></p>
+    </div>
+    <section class="sunriset-wrapper">
+      <div class="sunriset-icon-wrapper">
+        <img src="300ppi/sunrise.png" class="sunriset-icon">
+        <img src="300ppi/sunset.png" class="sunriset-icon">
+      </div>
+
+      <div class="sunriset-values-wrapper">
+        <p id="sunrise"></p>
+        <p id="sunset"></p>
+      </div>
+    </section>
+    <div class="info-wrapper">
+      <section class="keys-wrapper">
+        <p class="forecast-key">Max / Min:</p>
+        <p class="forecast-key">Temp. percepita:</p>
+        <p class="forecast-key">Umidità:</p>
+        <p class="forecast-key">Vento:</p>
+        <p class="forecast-key">Pressione:</p>
+      </section>
+
+      <section class="values-wrapper">
+        <p id="temp-interval"></p>
+        <p id="temperature"></p>
+        <p id="humidity"></p>
+        <p id="wind"></p>
+        <p id="pressure"></p>
+      </section>
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+
+</html>
