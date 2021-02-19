@@ -3,7 +3,7 @@ const citySelector = document.getElementById('city-select');
 const okBtn = document.getElementById('okBtn');
 const weatherDescription = document.getElementById('weather-description');
 const iconWrapper = document.getElementById('icon-wrapper');
-let icon = document.getElementById('icon');
+const icon = document.getElementById('icon');
 const cityName = document.getElementById('city-name');
 const temperature = document.getElementById('temperature');
 const tempInterval = document.getElementById('temp-interval');
@@ -11,7 +11,7 @@ const humidity = document.getElementById('humidity');
 const tempFeels = document.getElementById('temp-feels');
 const html = document.querySelector('html');
 const wind = document.getElementById('wind');
-const pressure = document.getElementById('pressure');
+const cloud = document.getElementById('cloud');
 const sunrise = document.getElementById('sunrise');
 const sunset = document.getElementById('sunset');
 const plusBtn = document.getElementById('plusBtn');
@@ -40,11 +40,16 @@ function utilityFilterJson(item) {
     weather_icon: item.weather[0].icon,
     icon: null,
     wind: item.wind.speed,
-    pressure: item.main.pressure,
+    cloud: item.clouds.all,
     sunrise: item.sys.sunrise,
     sunset: item.sys.sunset
   }
 }
+/**
+ *  Funzione per convertire i millisecondi in orario
+ * @param {number} millisecond 
+ * @returns {string}
+ */
 function convertMsToTime(millisecond) {
   let date = new Date(millisecond * 1000);
   value = new Intl.DateTimeFormat('it-IT', { timeStyle: 'short' }).format(date)
@@ -53,14 +58,6 @@ function convertMsToTime(millisecond) {
 console.log(convertMsToTime(1613666513));
 
 
-function colorSwitchMode() {
-  let now = new Date();
-  // let now = new Date('December 17, 1995 19:24:00');
-  hour = now.getHours();
-  if (hour > 5 & hour < 18) {
-    html.classList.remove('night');
-  }
-}
 // creo una funzione utility per comporre l'URL
 function utilityGetUrl(cityName) {
   return `${state.config.base_Url}${cityName}&appid=${state.config.api_key}&units=metric&lang=it`
@@ -105,7 +102,7 @@ function renderForecast() {
   tempFeels.textContent = `${state.forecast.temp_feels}`;
 
   wind.textContent = `${state.forecast.wind} m/s`;
-  pressure.textContent = `${state.forecast.pressure} hPa`
+  cloud.textContent = `${state.forecast.cloud}%`
 
   sunrise.textContent = convertMsToTime(state.forecast.sunrise);
   sunset.textContent = convertMsToTime(state.forecast.sunset);
@@ -123,8 +120,9 @@ function renderForecast() {
   }
 
 }
+// funzioni display
 function showCityPanel() {
-  overlaySelectPanel.classList.toggle('no_opacity');
+  overlaySelectPanel.classList.toggle('no_display');
   setTimeout(() => {
     overlaySelectPanel.classList.toggle('overlay__is-visible')
   }, 0);
@@ -132,13 +130,35 @@ function showCityPanel() {
 function hideCityPanel() {
   overlaySelectPanel.classList.toggle('overlay__is-visible')
   setTimeout(() => {
-    overlaySelectPanel.classList.toggle('no_opacity');
+    overlaySelectPanel.classList.toggle('no_display');
   }, 500);
   loadForecast();
 }
+function hideWelcomPanel() {
+  const welcomePanel = document.getElementById('welcome-panel');
+  setTimeout(() => {
+    welcomePanel.classList.add('no_opacity')
+  }, 2500);
+}
+/**
+ * 
+ */
+function colorSwitchMode() {
+  let now = new Date();
+  let sunrise = new Date(state.forecast.sunrise * 1000).getTime()
+  let sunset = new Date(state.forecast.sunset * 1000).getTime()
+  // let now = new Date('February 19, 2021 19:24:00');
+  let nowTime = now.getTime();
+  console.log(nowTime);
+  if (nowTime > sunrise && nowTime < sunset) {
+    html.classList.remove('night');
+  }
+}
+
 
 
 okBtn.addEventListener('click', hideCityPanel);
 document.addEventListener('DOMContentLoaded', loadForecast, { once: true });
 plusBtn.addEventListener('click', showCityPanel);
 minunBtn.addEventListener('click', hideCityPanel);
+document.addEventListener('DOMContentLoaded', hideWelcomPanel, { once: true });
