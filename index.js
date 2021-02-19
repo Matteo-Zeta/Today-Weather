@@ -27,7 +27,7 @@ const state = { //stato interno applicazione
   forecast: null
 }
 
-function utilityFilterJson(item) {
+function utilityFilterJson(item) { // filtra i dati che mi arrivano da API
   return {
     name: item.name,
     temp: parseInt(item.main.temp),
@@ -88,9 +88,8 @@ async function loadForecast() {
     console.error(errorMessage);
   }
 }
-function renderForecast() {
+function renderForecast() { //renderizza i dati in entrata
 
-  //state.forecast.weather[0].toUpperCase();
   weatherDescription.textContent = state.forecast.weather;
 
   cityName.textContent = state.forecast.name;
@@ -107,55 +106,63 @@ function renderForecast() {
   sunrise.textContent = convertMsToTime(state.forecast.sunrise);
   sunset.textContent = convertMsToTime(state.forecast.sunset);
 
-  // state.forecast.icon = `http://openweathermap.org/img/wn/${state.forecast.weather_icon}@2x.png`;
-  state.forecast.icon = `300ppi/${state.forecast.weather_icon}.png`;
+  state.forecast.icon = `300ppi/${state.forecast.weather_icon}.png`; //`http://openweathermap.org/img/wn/${state.forecast.weather_icon}@2x.png`; (link icone originali)
   iconWrapper.classList.add('forecast-icon');
   if (state.forecast.icon) {
-    //const forecastImage = document.createElement("img");
+
     icon.classList.add('icon-image');
     icon.src = state.forecast.icon;
-    //iconWrapper.appendChild(forecastImage);
+
   } else {
     iconWrapper.classList.add('no-icon');
   }
 
 }
-// funzioni display
-function showCityPanel() {
+/**
+ * Funzioni che regolano gli eventi display
+ */
+function showCityPanel() { //mostra il pannello per la select
   overlaySelectPanel.classList.toggle('no_display');
   setTimeout(() => {
     overlaySelectPanel.classList.toggle('overlay__is-visible')
   }, 0);
 }
-function hideCityPanel() {
+function hideCityPanel() { //nasconde il pannello per la select
   overlaySelectPanel.classList.toggle('overlay__is-visible')
   setTimeout(() => {
     overlaySelectPanel.classList.toggle('no_display');
   }, 500);
   loadForecast();
 }
-function hideWelcomPanel() {
+function hideWelcomPanel() { //nasconde la schermata di benvenuto
   const welcomePanel = document.getElementById('welcome-panel');
   setTimeout(() => {
     welcomePanel.classList.add('no_opacity')
   }, 2500);
 }
-/**
- * 
- */
-function colorSwitchMode() {
-  let now = new Date();
+
+function colorSwitchMode() { //funzione che tramite orario e meteo, assegna un tema all'app (per test. segui le istruzioni)
+  let now = new Date(); // commenta questa
   let sunrise = new Date(state.forecast.sunrise * 1000).getTime()
   let sunset = new Date(state.forecast.sunset * 1000).getTime()
-  // let now = new Date('February 19, 2021 19:24:00');
+  // let now = new Date('February 19, 2021 19:24:00'); // decommenta e inserisci l'orario e la data che preferisci
   let nowTime = now.getTime();
   console.log(nowTime);
+  html.classList.remove('clouds');
+  html.classList.remove('clouds-night');
   if (nowTime > sunrise && nowTime < sunset) {
     html.classList.remove('night');
+    if (state.forecast.cloud > 49) {
+      html.classList.add('clouds');
+    }
+  } else if (state.forecast.cloud > 49) {
+    html.classList.add('clouds-night');
   }
 }
 
-
+/**
+ * Event listener
+ */
 
 okBtn.addEventListener('click', hideCityPanel);
 document.addEventListener('DOMContentLoaded', loadForecast, { once: true });

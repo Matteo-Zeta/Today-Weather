@@ -3,13 +3,21 @@
   display: flex;
   justify-content: center;
   align-content: space-around;
-  /* background-color: skyblue; */
   background: linear-gradient(0deg, rgba(216,240,255,1) 0%, rgba(141,211,255,1) 25%, rgba(61,174,255,1) 100%);
 }
-
+/**
+classi per il tema dell'App
+**/
 .night {
   color: white;
    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(18,18,112,1) 53%, rgba(1,76,130,1) 100%);
+}
+.clouds {
+  background: linear-gradient(0deg, rgba(216,240,255,1) 0%, rgba(157,181,196,1) 25%, rgba(112,112,112,1) 100%);
+}
+.clouds-night {
+  color: white;
+  background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(25,25,62,1) 53%, rgba(80,80,80,1) 100%);
 }
 body {
   width: 90%;
