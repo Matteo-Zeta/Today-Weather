@@ -85,19 +85,20 @@
     </select>
     <button id="okBtn">Ok</button>
   </div>
-  <div class="forecast-wrapper">
+
+  <div class="weather-descritpion-wrapper">
     <h3 id="city-name"></h3>
     <section class="main-temp-wrapper">
       <p id="temp-feels"></p>
       <sup>°c</sup>
     </section>
-    
-    <div class="weather-descritpion-wrapper">
-      <div id="icon-wrapper">
-        <img id="icon">
-      </div>
-      <p id="weather-description"></p>
+    <div id="icon-wrapper">
+      <img id="icon">
     </div>
+    <p id="weather-description"></p>
+  </div>
+  <div class="forecast-wrapper">
+
     <section class="sunriset-wrapper">
       <div class="sunriset-icon-wrapper">
         <img src="300ppi/sunrise.png" class="sunriset-icon">
@@ -110,23 +111,41 @@
       </div>
     </section>
     <div class="info-wrapper">
-      <section class="keys-wrapper">
-        <p class="forecast-key">Max / Min:</p>
-        <p class="forecast-key">Temp. percepita:</p>
-        <p class="forecast-key">Umidità:</p>
-        <p class="forecast-key">Vento:</p>
-        <p class="forecast-key">Nuvolosità:</p>
-      </section>
 
-      <section class="values-wrapper">
-        <p id="temp-interval"></p>
-        <p id="temperature"></p>
-        <p id="humidity"></p>
-        <p id="wind"></p>
-        <p id="cloud"></p>
-      </section>
+      <div class="info_small_wrapper">
+        <section>
+          <p class="forecast-key">Max / Min:</p>
+          <p class="info_value" id="temp-interval"></p>
+        </section>
+  
+        <section>
+          <p class="forecast-key">Temp. percepita:</p>
+          <p class="info_value" id="temperature"></p>
+        </section>
+      </div>
+
+      <div class="info_small_wrapper">
+        <section>
+          <p class="forecast-key">Umidità:</p>
+          <p class="info_value" id="humidity"></p>
+        </section>
+  
+        <section>
+          <p class="forecast-key">Vento:</p>
+          <p class="info_value" id="wind"></p>
+        </section>
+      </div>
+
+      <div class="info_small_wrapper">
+        <section>
+          <p class="forecast-key">Nuvolosità:</p>
+          <p class="info_value" id="cloud"></p>
+        </section>
+      </div>
+
     </div>
-  </div>
+
+  </div> 
   <script src="index.js"></script>
 </body>
 

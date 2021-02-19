@@ -36,34 +36,41 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 #temp-feels {
-  font-size: 70px;
+  font-size: 100px;
   font-weight: 400;
   font-family: 'Roboto', sans-serif;
+  color: white;
+}
+.forecast-key {
+  font-weight: 500;
+  font-size: medium;
 }
 
 .weather-descritpion-wrapper {
   display: flex;
   width: 100%;
   justify-content: center;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: center;
 }
 .weather-descritpion-wrapper p {
+margin-top: 10px;
 align-self: center;
 font-size: large;
 }
+.weather-descritpion-wrapper h3 {
+  font-size: 20px;
+}
 .forecast-wrapper {
+  font-size: medium;
   padding: 10px;
   margin-top: 25%;
-  margin-bottom: 25%;
   margin-left: auto;
   margin-right: auto;
-  background-color: whitesmoke;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 90%;
-  min-height: 70%;
   border-radius: 5px;
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
   background-color: rgba(255, 255, 255, 0.3);
@@ -94,15 +101,19 @@ font-size: large;
   padding: 10px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  position: absolute;
-  bottom: 0;
-  box-sizing: border-box;
+  justify-content: space-around;
+}
+.info_value {
+  font-size: large;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
 }
 .values-wrapper {
   text-align: right;
 }
-
+.info_small_wrapper {
+  margin-top: 10px;
+}
 /* alba e tramonto */
 .sunriset-wrapper {
   /* background-color: cadetblue; */
@@ -110,7 +121,7 @@ font-size: large;
   width: 100%;
   display: flex;
   flex-direction: column;
-align-items: center;
+  align-items: center;
 }
 .sunriset-icon-wrapper {
   /* background-color: cornflowerblue; */
