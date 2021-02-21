@@ -35,6 +35,9 @@ body {
   display: flex;
   font-family: 'Roboto', sans-serif;
 }
+.main-temp-wrapper sup {
+  font-size: 20px;
+}
 #temp-feels {
   font-size: 100px;
   font-weight: 400;
@@ -52,6 +55,7 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  color: white;
 }
 .weather-descritpion-wrapper p {
 margin-top: 10px;
@@ -59,7 +63,7 @@ align-self: center;
 font-size: large;
 }
 .weather-descritpion-wrapper h3 {
-  font-size: 20px;
+  font-size: 25px;
 }
 .forecast-wrapper {
   font-size: medium;
@@ -116,12 +120,12 @@ font-size: large;
 }
 /* alba e tramonto */
 .sunriset-wrapper {
-  /* background-color: cadetblue; */
   margin-top: 40px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: medium;
 }
 .sunriset-icon-wrapper {
   /* background-color: cornflowerblue; */
@@ -135,9 +139,7 @@ font-size: large;
   justify-content: space-around;
 }
 .sunriset-icon {
-  max-width: 35px;
-  max-height: 35px;
-  object-fit: cover;
+  max-width: 45px;
 }
 
 select {

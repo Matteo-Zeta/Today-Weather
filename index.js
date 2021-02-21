@@ -145,7 +145,7 @@ function colorSwitchMode() { //funzione che tramite orario e meteo, assegna un t
   let now = new Date(); // commenta questa
   let sunrise = new Date(state.forecast.sunrise * 1000).getTime()
   let sunset = new Date(state.forecast.sunset * 1000).getTime()
-  // let now = new Date('February 19, 2021 11:24:00'); // decommenta e inserisci l'orario e la data che preferisci
+  // let now = new Date('February 20, 2021 19:24:00'); // decommenta e inserisci l'orario e la data che preferisci
   let nowTime = now.getTime();
   console.log(nowTime);
   html.classList.add('night');
@@ -153,11 +153,11 @@ function colorSwitchMode() { //funzione che tramite orario e meteo, assegna un t
   html.classList.remove('clouds-night');
   if (nowTime > sunrise && nowTime < sunset) {
     html.classList.remove('night');
-    if (state.forecast.cloud > 30) {
+    if (state.forecast.cloud > 45) {
       html.classList.add('clouds');
     }
   } else {
-    if (state.forecast.cloud > 30) {
+    if (state.forecast.cloud > 45) {
       html.classList.add('clouds-night');
     }
   }
